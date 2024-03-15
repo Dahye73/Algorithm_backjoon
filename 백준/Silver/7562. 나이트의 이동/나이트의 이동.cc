@@ -12,13 +12,9 @@ int l;
 
 int bfs(pair<int, int> s, pair<int, int> e, int cnt) {
 
-	vector<int> v;
+	vector<int> v = { s.first, s.second, cnt };
 	queue<vector<int>> q;
 	int visited[301][301] = { 0, };
-
-	v.push_back(s.first);
-	v.push_back(s.second);
-	v.push_back(cnt);
 
 	q.push(v);
 
@@ -40,11 +36,7 @@ int bfs(pair<int, int> s, pair<int, int> e, int cnt) {
 
 			if(0 <= nx && nx < l && 0 <= ny && ny < l && visited[nx][ny] == 0){
 				
-				vector<int> new_v;
-				new_v.push_back(nx);
-				new_v.push_back(ny);
-				new_v.push_back(c + 1);
-
+				vector<int> new_v = { nx, ny, c + 1 };
 				q.push(new_v);
 				visited[nx][ny] = 1;
 			}
