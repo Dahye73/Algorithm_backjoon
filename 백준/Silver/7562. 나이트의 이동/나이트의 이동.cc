@@ -2,32 +2,32 @@
 #include <string>
 #include <queue>
 #include <vector>
+#include<cstring>
 using namespace std;
 
 int dx[8] = { -2, -1, -2, 1, -1, 2, 1, 2 };
 int dy[8] = { -1, -2, 1, -2, 2, -1, 2, 1 };
+int visited[301][301];
+int chess[301][301];
 int l;
 
 
 
-int bfs(pair<int, int> s, pair<int, int> e, int cnt) {
+int bfs(pair<int, int> s, pair<int, int> e) {
 
-	vector<int> v = { s.first, s.second, cnt };
-	queue<vector<int>> q;
-	int visited[301][301] = { 0, };
-
-	q.push(v);
+	queue < pair<int, int>> q;
+	q.push({ s.first, s.second });
+	visited[s.first][s.second] = 1;
+	chess[s.first][s.second] = 0;
 
 	while (!q.empty())
 	{
-		int x = q.front()[0];
-		int y = q.front()[1];
-		int c = q.front()[2];
-
+		int x = q.front().first;
+		int y = q.front().second;
 		q.pop();
 
 		if (x == e.first && y == e.second) {
-			return c;
+			return chess[x][y];
 		}
 		for (int i = 0; i < 8; i++) {
 			
@@ -35,9 +35,8 @@ int bfs(pair<int, int> s, pair<int, int> e, int cnt) {
 			int ny = y + dy[i];
 
 			if(0 <= nx && nx < l && 0 <= ny && ny < l && visited[nx][ny] == 0){
-				
-				vector<int> new_v = { nx, ny, c + 1 };
-				q.push(new_v);
+				q.push({ nx, ny });
+				chess[nx][ny] = chess[x][y] + 1;
 				visited[nx][ny] = 1;
 			}
 		}
@@ -58,7 +57,10 @@ int main() {
 		cin >> start.first >> start.second;
 		cin >> end.first >> end.second;
 
-		cout << bfs(start, end, 0) << endl;
+		memset(visited, 0, sizeof(visited));
+		memset(chess, 0, sizeof(chess));
+
+		cout << bfs(start, end) << endl;
 	}
 	return 0;
 }
