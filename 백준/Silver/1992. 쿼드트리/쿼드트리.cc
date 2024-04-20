@@ -5,7 +5,6 @@ using namespace std;
 vector<vector<int>> board;
 int n;
 
-
 void quadTree(int x, int y, int size) {
 
 	int color = board[x][y];
@@ -24,8 +23,8 @@ void quadTree(int x, int y, int size) {
 			}
 		}
 	}
-	if (color == 1)cout << 1;
-	else cout << 0;
+	if (color == 0)cout << 0;
+	else cout << 1;
 }
 
 int main() {
