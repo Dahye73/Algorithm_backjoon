@@ -5,6 +5,10 @@ using namespace std;
 
 int main() {
 
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
   // t : 걸리는 기간
   // p : 받는 금액
   int n, t, p;
