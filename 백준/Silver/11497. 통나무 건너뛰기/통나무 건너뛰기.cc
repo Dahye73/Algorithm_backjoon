@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <cmath> // <math.h> 대신 <cmath> 사용을 권장합니다.
 #include <iostream>
 using namespace std;
 
@@ -24,11 +23,11 @@ int main() {
 
     sort(arr, arr + n, greater<>());
 
-    int _max = abs(arr[0] - arr[1]);
-    _max = max(_max, abs(arr[n - 2] - arr[n - 1]));
+    int _max = arr[0] - arr[1];
+    _max = max(_max, arr[n - 2] - arr[n - 1]);
 
     for (int i = 0; i < n - 2; i++) {
-      _max = max(_max, abs(arr[i] - arr[i + 2]));
+      _max = max(_max, arr[i] - arr[i + 2]);
     }
     cout << _max << endl;
   }
