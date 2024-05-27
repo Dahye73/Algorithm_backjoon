@@ -12,7 +12,6 @@ int dy[4] = { -1, 1, 0, 0 };
 
 void bfs() {
     queue<pair<int, int>> q;
-
     q.push(goal);
     dist[goal.first][goal.second] = 0;
 
@@ -26,9 +25,7 @@ void bfs() {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if (nx < 0 || nx >= n || ny < 0 || ny >= m)
-                continue;
-            if (map[nx][ny] == 1 && dist[nx][ny] == -1) {
+            if (nx >= 0 && nx < n && ny >= 0 && ny < m && map[nx][ny] == 1 && dist[nx][ny] == -1) {
                 dist[nx][ny] = dist[x][y] + 1;
                 q.push({ nx, ny });
             }
@@ -36,6 +33,9 @@ void bfs() {
     }
 }
 int main() {
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
     cin >> n >> m;
     memset(dist, -1, sizeof(dist));
