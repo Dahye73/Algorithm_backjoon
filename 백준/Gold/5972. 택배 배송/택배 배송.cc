@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector<int> dijkstra(int start, int n, vector<pair<int, int>> graph[]) {
+int dijkstra(int start, int n, vector<pair<int, int>> graph[]) {
 
   // 거리를 저장할 배열 ->  무한대로 초기화
   vector<int> dist(n + 1, INT_MAX);
@@ -38,7 +38,7 @@ vector<int> dijkstra(int start, int n, vector<pair<int, int>> graph[]) {
     }
   }
 
-  return dist;
+  return dist[n];
 }
 int main() {
 
@@ -58,10 +58,7 @@ int main() {
     graph[from].push_back({to, cost});
     graph[to].push_back({from, cost});
   }
-
-  vector<int> answer;
-  answer = dijkstra(1, n, graph);
-  cout << answer[n] << endl;
+  cout << dijkstra(1, n, graph) << endl;
 
   return 0;
 }
