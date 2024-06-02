@@ -41,6 +41,10 @@ vector<int> dijkstra(int start, int n, vector<pair<int, int>> graph[]) {
   return dist;
 }
 int main() {
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
   int n, m;
   cin >> n >> m;
 
