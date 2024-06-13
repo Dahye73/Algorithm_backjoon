@@ -1,0 +1,15 @@
+-- 테이블
+-- USED_GOODS_BOARD : 중고 거래 게시판 정보
+-- USED_GOODS_USER : 중고 거래 게시판 사용자 정보
+
+-- 문제요약 : 완료된 중고 거래의 총금액이 70만원 이상인 사람 조회
+-- 조회 : 회원 ID, 닉네임, 총거래금액
+-- 정렬 : 총 거래금액 기준 오름차순
+
+
+SELECT GU.USER_ID, GU.NICKNAME, SUM(PRICE) AS TOTAL_SALES
+FROM USED_GOODS_BOARD GB, USED_GOODS_USER GU
+WHERE GB.STATUS = "DONE" AND GB.WRITER_ID = GU.USER_ID
+GROUP BY GB.WRITER_ID 
+HAVING TOTAL_SALES >= 700000
+ORDER BY TOTAL_SALES
