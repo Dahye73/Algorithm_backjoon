@@ -9,7 +9,7 @@
 -- 과정
 -- 1. 테이블 조인 (조인키 : ANIMAL_ID)
 -- 2. 날짜 비교
--- 3. 
+-- 3. 보호 시작일 기준으로 오름차순 정렬
 
 SELECT AI.ANIMAL_ID, AI.NAME
 FROM ANIMAL_INS AI, ANIMAL_OUTS AO
