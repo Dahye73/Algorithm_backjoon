@@ -3,8 +3,9 @@
 
 -- 과정 
 -- 1. 테이블 조인(조인키 : PRODUCT_ID)
--- 2. 상품 코드로 그룹화 그룹화 
-
+-- 2. PRODUCT_ID 기준으로 그룹화 
+-- 3. 상품 코드별(각 그룹별) 매출액의 합게 계산
+-- 4. 정렬
 
 SELECT P.PRODUCT_CODE, SUM(P.PRICE * O.SALES_AMOUNT) AS SALES
 FROM PRODUCT P
